@@ -18,7 +18,7 @@ app.get('/api/products/:id', (req, res) => {
   const { id } = req.params
   const singleProduct = products.find((product) => product.id === Number(id))
   if (!singleProduct) {
-    res.status(404).send('Product Does Not Exist')
+    return res.status(404).send('Product Does Not Exist')
   }
   res.status(200).json(singleProduct)
 })
@@ -35,7 +35,7 @@ app.get('/api/query', (req, res) => {
   }
   if (sortedProducts.length < 1) {
     // res.status(200).send('no products matched your search')
-    res.status(200).json({ sucess: true, data: [] })
+    return res.status(200).json({ sucess: true, data: [] })
   }
   res.status(200).json(sortedProducts)
 })
