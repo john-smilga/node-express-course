@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 // people
-let people = require('./data')
+let { people } = require('./data')
 
 // static assets
 app.use(express.static('./public'))
