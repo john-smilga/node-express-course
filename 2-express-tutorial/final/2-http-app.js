@@ -1,5 +1,6 @@
 const http = require('http')
 const { readFileSync } = require('fs')
+
 // get all files
 const homePage = readFileSync('./navbar-app/index.html')
 const homeStyles = readFileSync('./navbar-app/styles.css')
@@ -7,7 +8,9 @@ const homeImage = readFileSync('./navbar-app/logo.svg')
 const homeLogic = readFileSync('./navbar-app/browser-app.js')
 
 const server = http.createServer((req, res) => {
+  // console.log(req.method)
   const url = req.url
+  console.log(url)
   // home page
   if (url === '/') {
     res.writeHead(200, { 'content-type': 'text/html' })
@@ -17,7 +20,7 @@ const server = http.createServer((req, res) => {
   // about page
   else if (url === '/about') {
     res.writeHead(200, { 'content-type': 'text/html' })
-    res.write('<h2>About Page</h2>')
+    res.write('<h1>about page</h1>')
     res.end()
   }
   // styles
@@ -32,7 +35,7 @@ const server = http.createServer((req, res) => {
     res.write(homeImage)
     res.end()
   }
-  // js
+  // logic
   else if (url === '/browser-app.js') {
     res.writeHead(200, { 'content-type': 'text/javascript' })
     res.write(homeLogic)
@@ -41,7 +44,7 @@ const server = http.createServer((req, res) => {
   // 404
   else {
     res.writeHead(404, { 'content-type': 'text/html' })
-    res.write('<h2>page not found</h2>')
+    res.write('<h1>page not found</h1>')
     res.end()
   }
 })
