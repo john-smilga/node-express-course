@@ -50,7 +50,7 @@
         try {
           const { data } = await axios.get('/api/people')
 
-          const people = data.people.map((person) => {
+          const people = data.data.map((person) => {
             return `<h5>${person.name}</h5>`
           })
           result.innerHTML = people.join('')
