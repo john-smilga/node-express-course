@@ -12,7 +12,7 @@ const showTask = async () => {
   try {
     const {
       data: { task },
-    } = await axios.get(`/api/tasks/${id}`)
+    } = await axios.get(`/api/v1/tasks/${id}`)
     const { _id: taskID, completed, name } = task
 
     taskIDDOM.textContent = taskID
@@ -37,7 +37,7 @@ editFormDOM.addEventListener('submit', async (e) => {
 
     const {
       data: { task },
-    } = await axios.patch(`/api/tasks/${id}`, {
+    } = await axios.patch(`/api/v1/tasks/${id}`, {
       name: taskName,
       completed: taskCompleted,
     })
@@ -46,17 +46,22 @@ editFormDOM.addEventListener('submit', async (e) => {
 
     taskIDDOM.textContent = taskID
     taskNameDOM.value = name
+    tempName = name
     if (completed) {
       taskCompletedDOM.checked = true
     }
-    formAlertDOM.innerHTML = `<p class="task-success text-center ">edit successful</p>`
+    formAlertDOM.style.display = 'block'
+    formAlertDOM.textContent = `success, edited task`
+    formAlertDOM.classList.add('text-success')
   } catch (error) {
     console.error(error)
     taskNameDOM.value = tempName
-    formAlertDOM.innerHTML = `<p class="task-danger text-center ">error, please try again</p>`
+    formAlertDOM.style.display = 'block'
+    formAlertDOM.innerHTML = `error, please try again`
   }
   editBtnDOM.textContent = 'Edit'
   setTimeout(() => {
-    formAlertDOM.innerHTML = ''
+    formAlertDOM.style.display = 'none'
+    formAlertDOM.classList.remove('text-success')
   }, 3000)
 })

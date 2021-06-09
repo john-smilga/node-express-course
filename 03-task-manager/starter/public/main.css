@@ -222,6 +222,9 @@ textarea {
 .task-form h4 {
   text-align: center;
 }
+.task-form .form-alert {
+  margin-top: 1rem;
+}
 .submit-btn {
   width: 100%;
   margin-top: 1rem;
@@ -265,7 +268,12 @@ form > :last-child {
   color: var(--red-dark);
   background-color: var(--red-light);
 }
-
+.text-danger {
+  color: var(--red-dark);
+}
+.text-success {
+  color: var(--green-dark);
+}
 /* loading */
 @keyframes spinner {
   to {
@@ -326,6 +334,7 @@ form > :last-child {
   max-width: var(--fixed-width);
   margin: 0 auto;
   margin-top: 2rem;
+  padding-bottom: 4rem;
 }
 .tasks {
   display: grid;
@@ -346,6 +355,24 @@ form > :last-child {
 }
 .single-task h5 {
   margin-bottom: 0;
+}
+.single-task span {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-left: -1.25rem;
+  margin-right: 1.5rem;
+}
+.single-task .fa-check-circle {
+  font-size: 1rem;
+  color: var(--green-dark);
+  visibility: hidden;
+}
+.task-completed h5 {
+  text-decoration: line-through;
+}
+.task-completed .fa-check-circle {
+  visibility: visible;
 }
 .loading-text {
   visibility: hidden;
@@ -370,28 +397,6 @@ form > :last-child {
   color: var(--red-dark);
 }
 
-.task-success,
-.task-danger {
-  font-size: var(--smallText);
-  margin-bottom: 0;
-  margin-top: 1rem;
-  color: var(--green-dark);
-}
-
-.task-danger {
-  color: var(--red-dark);
-}
-.task-completed {
-  display: inline-block;
-  width: 0.5rem;
-  height: 0.5rem;
-  margin-left: -1.25rem;
-  margin-right: 1.5rem;
-}
-.task-completed .fa-check-circle {
-  font-size: 1rem;
-  color: var(--green-dark);
-}
 /*************
    SINGLE TASK
 *************/

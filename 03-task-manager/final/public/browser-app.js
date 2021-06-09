@@ -2,14 +2,14 @@ const tasksDOM = document.querySelector('.tasks')
 const loadingDOM = document.querySelector('.loading-text')
 const formDOM = document.querySelector('.task-form')
 const taskInputDOM = document.querySelector('.task-input')
-const formAlert = document.querySelector('.form-alert')
+const formAlertDOM = document.querySelector('.form-alert')
 // Load tasks from /api/tasks
 const showTasks = async () => {
   loadingDOM.style.visibility = 'visible'
   try {
     const {
       data: { tasks },
-    } = await axios.get('/api/tasks')
+    } = await axios.get('/api/v1/tasks')
     if (tasks.length < 1) {
       tasksDOM.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>'
       loadingDOM.style.visibility = 'hidden'
@@ -18,10 +18,8 @@ const showTasks = async () => {
     const allTasks = tasks
       .map((task) => {
         const { completed, _id: taskID, name } = task
-        return `<div class="single-task">
-<h5><span class="task-completed">${
-          completed ? `<i class="far fa-check-circle"></i>` : ''
-        }</span>${name}</h5>
+        return `<div class="single-task ${completed && 'task-completed'}">
+<h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
 <div class="task-links">
 
 
@@ -56,7 +54,7 @@ tasksDOM.addEventListener('click', async (e) => {
     loadingDOM.style.visibility = 'visible'
     const id = el.parentElement.dataset.id
     try {
-      await axios.delete(`/api/tasks/${id}`)
+      await axios.delete(`/api/v1/tasks/${id}`)
       showTasks()
     } catch (error) {
       console.log(error)
@@ -72,15 +70,18 @@ formDOM.addEventListener('submit', async (e) => {
   const name = taskInputDOM.value
 
   try {
-    await axios.post('/api/tasks', { name })
+    await axios.post('/api/v1/tasks', { name })
     showTasks()
     taskInputDOM.value = ''
-    formAlert.innerHTML = `<p class="task-success">success, task added</p>`
+    formAlertDOM.style.display = 'block'
+    formAlertDOM.textContent = `success, task added`
+    formAlertDOM.classList.add('text-success')
   } catch (error) {
-    console.error('error')
-    formAlert.innerHTML = `<p class="task-danger">error, please try again</p>`
+    formAlertDOM.style.display = 'block'
+    formAlertDOM.innerHTML = `error, please try again`
   }
   setTimeout(() => {
-    formAlert.innerHTML = ''
+    formAlertDOM.style.display = 'none'
+    formAlertDOM.classList.remove('text-success')
   }, 3000)
 })
