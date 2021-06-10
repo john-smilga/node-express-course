@@ -413,6 +413,7 @@ form > :last-child {
   display: grid;
   grid-template-columns: 150px 1fr;
   align-items: center;
+  justify-items: start;
   gap: 0 1rem;
   margin-bottom: 0.75rem;
 }
