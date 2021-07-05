@@ -7,3 +7,4 @@
 3. Task Manager
 4. Store API
 5. JWT Basics
+6. Jobs API
