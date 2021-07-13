@@ -32,11 +32,6 @@ Email Validation Regex
 - Generate Token
 - Send Response with Token
 
-#### Mongoose Errors
-
-- Validation Errors
-- Duplicate (Email)
-
 #### Login User
 
 - Validate - email, password - in controller
@@ -46,3 +41,16 @@ Email Validation Regex
 - If no user or password does not match, throw UnauthenticatedError
 - If correct, generate Token
 - Send Response with Token
+
+#### Mongoose Errors
+
+- Validation Errors
+- Duplicate (Email)
+- Cast Error
+
+#### Security
+
+- helmet
+- cors
+- xss-clean
+- express-rate-limit
