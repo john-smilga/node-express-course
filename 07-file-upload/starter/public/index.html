@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- title -->
+ <title>File Upload</title>
+ <!-- normalize css -->
+ <link rel="stylesheet" href="./normalize.css">
+ <!-- styles css -->
+ <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+ <form class="form file-form">
+  <h4>File Upload</h4>
+  <!-- single row -->
+  <div class="form-row">
+   <label for="name" class="form-label">Name</label>
+   <input type="text" id="name" class="form-input" value="computer">
+  </div>
+  <!-- end of single row -->
+  <!-- single row -->
+  <div class="form-row">
+   <label for="price" class="form-label">Price</label>
+   <input type="number" id="price" class="form-input" value="150.99">
+  </div>
+  <!-- end of single row -->
+  <!-- single row -->
+  <div class="form-row">
+   <label for="image" class="form-label">Image</label>
+   <input type="file" id="image" accept="image/*" >
+  </div>
+  <!-- end of single row -->
+  
+   <button type="submit" class="btn btn-block">add product</button>
+  </div>
+  </form>
+<section class="container">
+</section>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="./browser-app.js"></script>
+</body>
+</html>

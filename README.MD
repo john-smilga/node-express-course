@@ -13,3 +13,4 @@
 4. Store API
 5. JWT Basics
 6. Jobs API
+7. File Upload (local and cloudinary)
