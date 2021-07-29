@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stripe Payment</title>
+    <!-- global css -->
+    <link rel="stylesheet" href="./global.css" />
+    <!-- local css -->
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- STRIPE STUFF -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+  </head>
+  <body>
+    <!-- navbar -->
+
+    <!-- content -->
+    <section class="section section-center content">
+      <h1>Stripe Payment</h1>
+      <!-- Display a payment form -->
+      <form id="payment-form">
+        <!-- custom stuff -->
+        <p>Test Card Number: 4242 4242 4242 4242</p>
+        <!-- end custom stuff -->
+        <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+        <button id="submit">
+          <div class="spinner hidden" id="spinner"></div>
+          <span id="button-text">Pay</span>
+        </button>
+        <p id="card-error" role="alert"></p>
+        <p class="result-message hidden">
+          Payment succeeded, see the result in your
+          <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to
+          pay again.
+        </p>
+      </form>
+    </section>
+    <!-- js -->
+
+    <script src="./browser-app.js"></script>
+  </body>
+</html>
