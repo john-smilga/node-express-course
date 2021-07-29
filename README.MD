@@ -14,3 +14,4 @@
 5. JWT Basics
 6. Jobs API
 7. File Upload (local and cloudinary)
+8. Send Email (nodemailer and ethereal)
