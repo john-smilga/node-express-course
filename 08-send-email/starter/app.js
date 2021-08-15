@@ -12,7 +12,7 @@ app.use(express.json());
 
 // routes
 app.get('/', (req, res) => {
-  res.send('<h1>Email Project</h1>');
+  res.send('<h1>Email Project</h1> ');
 });
 
 app.use(notFoundMiddleware);
