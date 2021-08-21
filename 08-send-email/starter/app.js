@@ -12,13 +12,13 @@ app.use(express.json());
 
 // routes
 app.get('/', (req, res) => {
-  res.send('<h1>Email Project</h1> ');
+  res.send('<h1>Email Project</h1>');
 });
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 const start = async () => {
   try {
