@@ -14,7 +14,6 @@ app.use(express.json());
 app.use(express.static('./public'));
 
 // stripe
-
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
