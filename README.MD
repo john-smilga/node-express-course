@@ -16,3 +16,6 @@
 7. File Upload (local and cloudinary)
 8. Send Email (nodemailer and ethereal)
 9. Stripe Payment
+10. E-Commerce API
+11. Confirm Workflow
+12. Yelp Clone
