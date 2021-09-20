@@ -29,9 +29,9 @@ docgen build -i fileName.json -o index.html
 
 #### 404 vs ErrorHandler Middleware
 
-#### Morgan
+#### Morgan Package
 
-[Morgan Package](https://www.npmjs.com/package/morgan)
+[Morgan ](https://www.npmjs.com/package/morgan)
 
 #### User Model
 
@@ -39,7 +39,9 @@ docgen build -i fileName.json -o index.html
 [] create schema with name,email, password (all type:String)
 [] export mongoose model
 
-#### Validator package
+#### Validator Package
+
+[Validator](https://www.npmjs.com/package/validator)
 
 #### Auth Routes Structure
 
