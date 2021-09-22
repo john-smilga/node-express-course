@@ -90,9 +90,8 @@ docgen build -i fileName.json -o index.html
 
 #### Login Route
 
-- [] check if email and password exist if one missing 400
-- [] find user
-- [] if no user 401
-- [] if password does not match 401
+- [] check if email and password exist, if one missing 400
+- [] find user, if no user 401
+- [] check password, if does not match 401
 - [] if everything is correct attach cookie
   and send back the same response as in register
