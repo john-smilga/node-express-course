@@ -90,8 +90,45 @@ docgen build -i fileName.json -o index.html
 
 #### Login Route
 
-- [] check if email and password exist, if one missing 400
-- [] find user, if no user 401
-- [] check password, if does not match 401
-- [] if everything is correct attach cookie
+- [] check if email and password exist, if one missing return 400
+- [] find user, if no user return 401
+- [] check password, if does not match return 401
+- [] if everything is correct, attach cookie
   and send back the same response as in register
+
+#### Logout Route
+
+- [] set token cookie equal to some string value
+- [] set expires:new Date(Date.now())
+
+#### User Routes Structure
+
+- [] add userController file
+- [] export (getAllUsers,getSingleUser,showCurrentUser,updateUser,updateUserPassword) functions
+- [] res.send('some string value')
+- [] setup userRoutes file
+- [] import all controllers
+- [] setup just one route - router.route('/').get(getAllUsers);
+- [] import userRoutes as userRouter in the app.js
+- [] setup app.use('/api/v1/users', userRouter)
+
+#### GetAllUsers and GetSingleUser
+
+- [] Get all users where role is 'user' and remove password
+- [] Get Single User where id matches id param and remove password
+- [] If no user 404
+
+#### Authenticate User Setup
+
+#### Auth User Complete
+
+#### Authorize Permissions Setup
+
+#### Authorize Permissions Complete
+
+#### Get Single User Fix
+
+#### ShowCurrentUser
+
+- [] get user from req
+- [] send response with user
