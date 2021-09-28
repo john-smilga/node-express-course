@@ -164,4 +164,4 @@ docgen build -i fileName.json -o index.html
 
 #### updateUser with user.save()
 
-#### Setup and Implment checkPermissions()
+#### Setup and Apply checkPermissions()

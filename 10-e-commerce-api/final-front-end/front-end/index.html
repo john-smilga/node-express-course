@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing Cookies</title>
+    <!-- normalize.css -->
+    <link rel="stylesheet" href="./normalize.css" />
+    <!-- main.css -->
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <form class="form">
+      <h4>login form</h4>
+      <div class="form-row">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-input email-input" name="email" />
+      </div>
+      <div class="form-row">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-input password-input"
+        />
+      </div>
+      <button type="submit" class="btn btn-block submit-btn">submit</button>
+    </form>
+    <div class="container">
+      <button class="btn testing-btn">Testing</button>
+      <button class="btn logout-btn">Logout</button>
+    </div>
+    <script src="./browser-app.js"></script>
+  </body>
+</html>
