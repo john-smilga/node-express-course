@@ -277,3 +277,75 @@ docgen build -i fileName.json -o index.html
 - [] set review properties equal to rating, title, comment
 - [] use await review.save()
 - [] send back 200
+
+#### Populate
+
+#### Virtuals
+
+#### Get Single Product Reviews
+
+#### Remove All Reviews
+
+#### Aggregation Pipeline - Atlas and Code
+
+#### Order Schema
+
+- [] create Review.js in models folder
+- [] create Schema
+- [] tax : {type:Number}
+- [] shippingFee: {type:Number}
+- [] subtotal: {type:Number}
+- [] total: {type:Number}
+- [] orderItems:[]
+- [] status:{type:String}
+- [] user
+- [] clientSecret:{type:String}
+- [] paymentId:{type:String}
+- [] set timestamps
+- [] export Review model
+
+#### Order Structure
+
+- [] add orderController file in controllers
+- [] export (getAllOrders, getOrder, getSingleUserOrders,
+  createOrder, updateOrder) functions
+- [] res.send('function name')
+- [] setup orderRoutes file in routes
+- [] import all controllers
+- [] authenticate user in all routes
+- [] getAllOrders admin only
+- [] typical REST setup
+- [] router.route('/showAllMyOrders').get(getSingleUserOrders)
+- [] import orderRoutes as orderRouter in the app.js
+- [] setup app.use('/api/v1/orders', orderRouter)
+
+#### Create Order
+
+- [] most complex
+
+#### Get All Orders and Get Single Order
+
+- [] check permissions in single order
+
+#### Get Single User Orders
+
+- [] find orders where user is equal to req.user.userId
+
+#### Update Order
+
+- [] get order id
+- [] get paymentIntentID (req.body)
+- [] get order
+- [] if does not exist - 404
+- [] check permissions
+- [] set paymentIntentID and status as 'paid'
+- [] order.save()
+
+#### Create Docs
+
+- [] docgen build -i fileName.json -o index.html
+- [] create index.html in public
+
+#### Security Packages
+
+#### Deploy on Heroku
