@@ -290,7 +290,7 @@ docgen build -i fileName.json -o index.html
 
 #### Order Schema
 
-- [] create Review.js in models folder
+- [] create Order.js in models folder
 - [] create Schema
 - [] tax : {type:Number}
 - [] shippingFee: {type:Number}
@@ -302,12 +302,12 @@ docgen build -i fileName.json -o index.html
 - [] clientSecret:{type:String}
 - [] paymentId:{type:String}
 - [] set timestamps
-- [] export Review model
+- [] export Order model
 
 #### Order Structure
 
 - [] add orderController file in controllers
-- [] export (getAllOrders, getOrder, getSingleUserOrders,
+- [] export (getAllOrders, getSingleOrder, getCurrentUserOrders,
   createOrder, updateOrder) functions
 - [] res.send('function name')
 - [] setup orderRoutes file in routes
@@ -315,9 +315,11 @@ docgen build -i fileName.json -o index.html
 - [] authenticate user in all routes
 - [] getAllOrders admin only
 - [] typical REST setup
-- [] router.route('/showAllMyOrders').get(getSingleUserOrders)
+- [] router.route('/showAllMyOrders').get(getCurrentUserOrders)
 - [] import orderRoutes as orderRouter in the app.js
 - [] setup app.use('/api/v1/orders', orderRouter)
+
+#### Orders in Postman
 
 #### Create Order
 
