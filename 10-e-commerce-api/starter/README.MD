@@ -319,7 +319,7 @@ docgen build -i fileName.json -o index.html
 - [] import orderRoutes as orderRouter in the app.js
 - [] setup app.use('/api/v1/orders', orderRouter)
 
-#### Orders in Postman
+#### Order in Postman
 
 #### Create Order
 
@@ -327,20 +327,21 @@ docgen build -i fileName.json -o index.html
 
 #### Get All Orders and Get Single Order
 
-- [] check permissions in single order
+- [] getAllOrders - admin only
+- [] getSingleOrder - chechPermissions
 
-#### Get Single User Orders
+#### Get Current User Orders
 
 - [] find orders where user is equal to req.user.userId
 
 #### Update Order
 
 - [] get order id
-- [] get paymentIntentID (req.body)
+- [] get paymentIntentId (req.body)
 - [] get order
 - [] if does not exist - 404
 - [] check permissions
-- [] set paymentIntentID and status as 'paid'
+- [] set paymentIntentId and status as 'paid'
 - [] order.save()
 
 #### Create Docs
