@@ -2,7 +2,6 @@
   {
     "tax": 399,
     "shippingFee": 499,
-    "total": 30999,
     "items": [
       {
         "name": "accent chair",
@@ -16,7 +15,6 @@
   {
     "tax": 499,
     "shippingFee": 799,
-    "total": 60999,
     "items": [
       {
         "name": "bed",

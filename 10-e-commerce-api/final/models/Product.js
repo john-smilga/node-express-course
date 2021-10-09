@@ -4,19 +4,19 @@ const ProductSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Please provide product name'],
       trim: true,
+      required: [true, 'Please provide product name'],
       maxlength: [100, 'Name can not be more than 100 characters'],
     },
     price: {
       type: Number,
-      required: [true, 'Please provide price'],
+      required: [true, 'Please provide product price'],
       default: 0,
     },
     description: {
       type: String,
-      required: [true, 'Please provide description'],
-      maxlength: [1000, 'Description can not be more than 100 characters'],
+      required: [true, 'Please provide product description'],
+      maxlength: [1000, 'Description can not be more than 1000 characters'],
     },
     image: {
       type: String,
@@ -24,13 +24,12 @@ const ProductSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      required: [true, 'Please provide category'],
+      required: [true, 'Please provide product category'],
       enum: ['office', 'kitchen', 'bedroom'],
     },
     company: {
       type: String,
       required: [true, 'Please provide company'],
-
       enum: {
         values: ['ikea', 'liddy', 'marcos'],
         message: '{VALUE} is not supported',
@@ -58,6 +57,10 @@ const ProductSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    numOfReviews: {
+      type: Number,
+      default: 0,
+    },
     user: {
       type: mongoose.Types.ObjectId,
       ref: 'User',
@@ -76,7 +79,6 @@ ProductSchema.virtual('reviews', {
 
 ProductSchema.pre('remove', async function (next) {
   await this.model('Review').deleteMany({ product: this._id });
-  next();
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

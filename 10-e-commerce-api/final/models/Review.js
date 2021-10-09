@@ -6,11 +6,7 @@ const ReviewSchema = mongoose.Schema(
       type: Number,
       min: 1,
       max: 5,
-      required: [true, 'Please provide rating,'],
-    },
-    something: {
-      type: Number,
-      min: 1,
+      required: [true, 'Please provide rating'],
     },
     title: {
       type: String,
@@ -35,34 +31,34 @@ const ReviewSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-
 ReviewSchema.index({ product: 1, user: 1 }, { unique: true });
 
 ReviewSchema.statics.calculateAverageRating = async function (productId) {
   const result = await this.aggregate([
-    // look for reviews associated with a product
     { $match: { product: productId } },
     {
       $group: {
-        _id: '$product',
+        _id: null,
         averageRating: { $avg: '$rating' },
+        numOfReviews: { $sum: 1 },
       },
     },
   ]);
-  // optional chaining
-  // console.log(result[0]?.averageRating || 'does not exist');
-  // optionally Math.ceil()
+
   try {
-    await this.model('Product').findByIdAndUpdate(productId, {
-      averageRating: result[0]?.averageRating || 0,
-    });
+    await this.model('Product').findOneAndUpdate(
+      { _id: productId },
+      {
+        averageRating: Math.ceil(result[0]?.averageRating || 0),
+        numOfReviews: result[0]?.numOfReviews || 0,
+      }
+    );
   } catch (error) {
     console.log(error);
   }
 };
 
 ReviewSchema.post('save', async function () {
-  console.log(this.model('Product'));
   await this.constructor.calculateAverageRating(this.product);
 });
 

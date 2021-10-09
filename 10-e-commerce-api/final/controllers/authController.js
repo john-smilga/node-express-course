@@ -1,32 +1,25 @@
 const User = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
-const { createJWT, sendResponseWithCookie } = require('../utils/jwt');
-
-// Public Route
-// Register User   =>    POST /api/v1/auth/register
+const { attachCookiesToResponse, createTokenUser } = require('../utils');
 
 const register = async (req, res) => {
-  const { email } = req.body;
+  const { email, name, password } = req.body;
 
   const emailAlreadyExists = await User.findOne({ email });
-
   if (emailAlreadyExists) {
     throw new CustomError.BadRequestError('Email already exists');
   }
 
-  const user = await User.create(req.body);
+  // first registered user is an admin
+  const isFirstAccount = (await User.countDocuments({})) === 0;
+  const role = isFirstAccount ? 'admin' : 'user';
 
-  sendResponseWithCookie({
-    res,
-    statusCode: StatusCodes.OK,
-    user: { name: user.name, userId: user._id, role: user.role },
-  });
+  const user = await User.create({ name, email, password, role });
+  const tokenUser = createTokenUser(user);
+  attachCookiesToResponse({ res, user: tokenUser });
+  res.status(StatusCodes.CREATED).json({ user: tokenUser });
 };
-
-// Public Route
-// Login User   =>    POST /api/v1/auth/login
-
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -42,20 +35,15 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new CustomError.UnauthenticatedError('Invalid Credentials');
   }
-  sendResponseWithCookie({
-    res,
-    statusCode: StatusCodes.OK,
-    user: { name: user.name, userId: user._id, role: user.role },
-  });
+  const tokenUser = createTokenUser(user);
+  attachCookiesToResponse({ res, user: tokenUser });
+
+  res.status(StatusCodes.OK).json({ user: tokenUser });
 };
-
-// Public Route
-// Logout User   =>    GET /api/v1/auth/logout
-
 const logout = async (req, res) => {
-  res.cookie('token', null, {
-    expires: new Date(Date.now()),
+  res.cookie('token', 'logout', {
     httpOnly: true,
+    expires: new Date(Date.now() + 1000),
   });
   res.status(StatusCodes.OK).json({ msg: 'user logged out!' });
 };

@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please provide name'],
-    maxlength: 50,
     minlength: 3,
+    maxlength: 50,
   },
   email: {
     type: String,
+    unique: true,
     required: [true, 'Please provide email'],
     validate: {
       validator: validator.isEmail,
@@ -30,7 +31,9 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre('save', async function () {
-  console.log(this.model('Product'));
+  // console.log(this.modifiedPaths());
+  // console.log(this.isModified('name'));
+  if (!this.isModified('password')) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });

@@ -358,7 +358,7 @@
 #### Deploy on Heroku
 
 - [] heroku account and heroku cli
-- [] remove from the main repo
+- [] remove/copy from the main repo
 - [] add dev command "nodemon app.js"
 - [] change start to "node app.js"
 - [] setup node version in package.json

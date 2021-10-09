@@ -1,21 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const { authenticateUser } = require('../middleware/authentication');
 
 const {
   createReview,
   getAllReviews,
-  getReview,
+  getSingleReview,
   updateReview,
   deleteReview,
 } = require('../controllers/reviewController');
-
-const { authenticateUser } = require('../middleware/authentication');
 
 router.route('/').post(authenticateUser, createReview).get(getAllReviews);
 
 router
   .route('/:id')
-  .get(getReview)
+  .get(getSingleReview)
   .patch(authenticateUser, updateReview)
   .delete(authenticateUser, deleteReview);
 
