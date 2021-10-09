@@ -65,7 +65,7 @@ const createOrder = async (req, res) => {
 
   res
     .status(StatusCodes.CREATED)
-    .json({ order, clientSecret: order.client_secret });
+    .json({ order, clientSecret: order.clientSecret });
 };
 const getAllOrders = async (req, res) => {
   const orders = await Order.find({});
