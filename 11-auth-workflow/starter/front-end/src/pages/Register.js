@@ -43,7 +43,7 @@ function Register() {
       showAlert({ text: data.msg, type: 'success' });
     } catch (error) {
       const { msg } = error.response.data;
-      showAlert({ text: msg });
+      showAlert({ text: msg || 'there was an error' });
     }
     setLoading(false);
   };
