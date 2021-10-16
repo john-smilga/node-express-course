@@ -18,5 +18,5 @@
 9. Stripe Payment
 10. E-Commerce API
 11. Auth Workflow (verify email, reset password)
-12. Sessons
+12. Sessions
 13. Yelp Clone
