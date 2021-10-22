@@ -6,7 +6,7 @@ const {
   attachCookiesToResponse,
   createTokenUser,
   sendVerificationEmail,
-  sendResetPassswordEmail,
+  sendResetPasswordEmail,
   createHash,
 } = require('../utils');
 const crypto = require('crypto');
@@ -147,7 +147,7 @@ const forgotPassword = async (req, res) => {
     const passwordToken = crypto.randomBytes(70).toString('hex');
     // send email
     const origin = 'http://localhost:3000';
-    await sendResetPassswordEmail({
+    await sendResetPasswordEmail({
       name: user.name,
       email: user.email,
       token: passwordToken,

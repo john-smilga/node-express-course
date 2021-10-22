@@ -76,7 +76,7 @@
 - authController
 - forgotPassword and resetPassword
 - authRoutes
-- post '/forgot-password' 'reset-password'
+- post '/forgot-password' '/reset-password'
 
 #### Forgot Password Controller
 
