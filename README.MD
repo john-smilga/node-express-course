@@ -24,4 +24,3 @@ Find the Content Useful?
 10. E-Commerce API
 11. Auth Workflow (verify email, reset password)
 12. Sessions
-13. Yelp Clone
