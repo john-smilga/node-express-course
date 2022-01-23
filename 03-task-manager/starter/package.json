@@ -1,13 +1,13 @@
 {
   "name": "jobs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Task Manager",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ashwin Shukla",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
