@@ -27,6 +27,20 @@ const uploadProductImageLocal = async (req, res) => {
 };
 
 const uploadProductImage = async (req, res) => {
+
+  //additional checks for proper image uploading and error handling
+  if (!req.files) {
+    throw new CustomError.BadRequestError('No File Uploaded');
+  }
+  const productImage = req.files.image;
+  if (!productImage.mimetype.startsWith('image')) {
+    throw new CustomError.BadRequestError('Please Upload Image');
+  }
+  const maxSize = 1024 * 1024;
+  if (productImage.size > maxSize) {
+    throw new CustomError.BadRequestError('Please upload image smaller then 1MB');
+  }
+
   const result = await cloudinary.uploader.upload(
     req.files.image.tempFilePath,
     {
