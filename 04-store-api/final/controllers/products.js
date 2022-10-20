@@ -37,6 +37,10 @@ const getAllProducts = async (req, res) => {
     filters = filters.split(',').forEach((item) => {
       const [field, operator, value] = item.split('-');
       if (options.includes(field)) {
+        if (queryObject[field]) {
+          queryObject[field][operator] = Number(value);
+          return;
+        }
         queryObject[field] = { [operator]: Number(value) };
       }
     });
