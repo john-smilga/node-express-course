@@ -645,12 +645,37 @@ const showStats = async (req, res) => {
 
 #### Deploy
 
-- move starter to desktop
-- remove existing .git repo
-- heroku login "heroku login"
-- git init
-- git add .
-- git commit -m "commit message"
-- heroku create nameOfTheApp
-- setup .env variables in heroku dashboard
-- git push heroku master (or main)
+- remove existing git repo
+
+- add reverse() in showStats
+
+controllers/jobs.js
+
+```js
+monthlyApplications = monthlyApplications
+  .map((item) => {
+    const {
+      _id: { year, month },
+      count,
+    } = item;
+    const date = moment()
+      .month(month - 1)
+      .year(year)
+      .format('MMM Y');
+    return { date, count };
+  })
+  .reverse();
+```
+
+- remove Procfile
+- remove engines from package.json
+
+```json
+"engines": {
+    "node": "16.x"
+  }
+```
+
+- fix build folder (remove /build from client/.gitignore)
+- setup new github repo
+- deploy to render
