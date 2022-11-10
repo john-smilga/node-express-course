@@ -1,4 +1,4 @@
-const amount = 9
+const amount = 14
 
 if (amount < 10) {
   console.log('small number')
