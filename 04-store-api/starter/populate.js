@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 require('dotenv').config()
 
 
@@ -44,4 +44,4 @@ const start =async ()=>{
 }
 
 start()
->>>>>>> 903c21e04f1f41b763ed6ae3f3235ce0a2b9a628
+
