@@ -1,18 +1,20 @@
 const getAllTasks = (req, res) => {
-  res.send('TASKS')
+  res.send('Get tasks')
 }
 
 const createTask = (req, res) => {
-  res.send('Create tasks')
+  const { name } = req.body
+  res.json({ success: true, message: `welcome ${name}` })
 }
 const getTask = (req, res) => {
-  res.send('Create tasks')
+  const { id } = req.params
+  res.send(`Get single task id: ${id}`)
 }
 const updateTask = (req, res) => {
-  res.send('Create tasks')
+  res.send('Update task')
 }
 const deleteTask = (req, res) => {
-  res.send('Create tasks')
+  res.send('Delete task')
 }
 
 module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask }
