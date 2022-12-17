@@ -1,3 +1,5 @@
+require('dotenv').config()
+const connectionDB = require('./db/connect')
 const express = require('express')
 const taskRouter = require('./routes/tasks')
 
@@ -16,5 +18,14 @@ app.get('/', (req, res) => {
 
 //! Listen PORT
 app.listen(port, () => {
-  console.log('Listening for 5000 port')
+  console.log('Listening for 3000 port')
 })
+
+const start = async function () {
+  try {
+    await connectionDB(process.env.MONGO_URL)
+  } catch (error) {
+    console.log(error)
+  }
+}
+start()
