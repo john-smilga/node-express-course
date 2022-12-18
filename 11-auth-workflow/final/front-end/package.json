@@ -1,24 +1,24 @@
 {
-  "name": "email-workflow-front-end",
+  "name": "app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "axios": "^0.21.1",
     "normalize.css": "^8.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "react-router-dom": "^5.2.1",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.3.1",
-    "web-vitals": "^1.1.2"
+    "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI= react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
