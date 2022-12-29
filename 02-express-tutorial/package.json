@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon querystring.js"
+    "start": "nodemon middleware.js"
   },
   "keywords": [],
   "author": "",
