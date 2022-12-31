@@ -35,8 +35,27 @@ app.put('/api/people/:id', (req, res)=>{
 
      const {id} = req.params
      const {name} = req.body
-     console.log(id, name)
-     res.send('Hey')
+    //  console.log(id, name)
+    //  res.send('Hey')
+
+    const person = people.find((guys)=>guys.id == Number(id))
+
+    if(!person){
+        return res.status(404).json({success:false, msg: `No person has been found with id:${id}`})
+    }
+
+
+    const newperson = people.map((perso)=>{
+
+        if(perso.id==Number(id)){
+            perso.name= name
+        }
+
+        return perso
+    })
+
+    res.status(200).json({success:true, data:newperson})
+     
 
 
 })
