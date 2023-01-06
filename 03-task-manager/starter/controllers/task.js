@@ -1,4 +1,4 @@
-
+const Task = require('../models/task')
 
 const getTasks = (req, res)=>{
 
@@ -9,11 +9,13 @@ const getTasks = (req, res)=>{
 }
 
 
-const postTasks = (req, res)=>{
+const postTasks = async (req, res)=>{
+
+    const task = await Task.create(req.body)
 
     // res.send('create a task')
 
-    res.json(req.body)
+    res.status(201).json({task})
 
 }
 
