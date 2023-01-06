@@ -27,6 +27,7 @@ const DB = async()=>{
     try{
 
         await connectDB(process.env.Mongo_secret_key)
+        // await console.log('Connection is true')
 
         app.listen({port}, ()=>{
         
