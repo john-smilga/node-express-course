@@ -1,11 +1,11 @@
 const mangoose = require('mongoose')
 
-const connectionString = 'mongodb+srv://CasanadraTaskManager:9TYb8fHaEbMgkde83rT4@nodeexpressprojects.kqcqziw.mongodb.net/03-TASK-MANAGER?retryWrites=true&w=majority'
+
 
 
 const conecteDB = (url) => {
    return mangoose
-    .connect(connectionString, {
+    .connect(url, {
         useNewUrlParser: true, 
         useCreateIndex: true, 
         useFindAndModify: false, 

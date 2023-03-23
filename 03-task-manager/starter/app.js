@@ -3,6 +3,7 @@
  const tasks = require('./routes/tasks')
  const connectDB = require('./db/connect');
 const conecteDB = require('./db/connect');
+require('dotenv').config()
 
 
 //Middleware
@@ -17,11 +18,11 @@ app.get('/hello', (req, res) => {
 app.use('/api/v1/tasks', tasks)
 
 
- const port = 3000
+ const port = 3047
 
  const start = async () => {
     try {
-        await conecteDB()
+        await conecteDB(process.env.MONGO_URI)
         app.listen(port, console.log(`server is listnening on port ${port}...`))
     }catch (error) {
         console.log(error);
