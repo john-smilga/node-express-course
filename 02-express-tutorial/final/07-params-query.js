@@ -40,7 +40,7 @@ app.get('/api/v1/query', (req, res) => {
 
   if (search) {
     sortedProducts = sortedProducts.filter((product) => {
-      return product.name.startsWith(search)
+      return product.name.includes(search)  //.includes() is a better approach to find a specified word in query string instead of .startsWith()
     })
   }
   if (limit) {
