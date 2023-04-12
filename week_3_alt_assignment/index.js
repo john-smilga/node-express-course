@@ -169,7 +169,13 @@ app.get("/whatisaserver/dynamicHtml", (request, response) => {
     <pre>${request.headers["user-agent"]}</pre>
 
     <p>
-      Have you ever seen a URL with a bunch of jibberish in it? For example:
+      This is how the browser and the server can communicate with each other
+      in order make your website dynamic. The server can decide to return different
+      data based on information the browser gives it in the request.
+    </p>
+    <p>  
+      Even the URL itself can have information that lets us change what we show
+      on the website! Have you ever seen a URL with a bunch of gibberish in it? For example:
     </p>
     <pre>http://example.com?filter=1%2C56%2C3%2C7&sortOrder=id%3Adesc</pre>
     <p>
@@ -233,8 +239,19 @@ app.get("/whatisaserver/dynamicHtml", (request, response) => {
             <p style="font-size: 12px"><i>You can change the text in this orange box by changing the URL!!</i></p>
           </div>
 
-          <p>To learn more, check out this tool for
-              <a href="https://www.urlencoder.org/">URL Encoding!</a>
+          <p>You might still be wondering, what's up with the percent signs and whatnot in the
+             earlier example (<code>http://example.com?filter=1%2C56%2C3%2C7&sortOrder=id%3Adesc</code>).
+             
+             There's certain characters that don't play very well with links in the browser,
+             like spaces. There's also certain characters that already have a specific meaning in URLs like
+             ampersands (<code>&</code>) and colons (<code>:</code>). 
+         </p>
+         <p>In order to make things more clear for the browser, we use URL encoding to translate those characters
+            into a format that the browser can understand without ambiguity. 
+            
+             To learn more, check out this tool for
+              <a href="https://www.urlencoder.org/">URL Encoding!</a> (you can switch between encoding and decoding 
+             using the buttons at the top)
             </p>
 
             <p>
