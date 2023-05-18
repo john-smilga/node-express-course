@@ -1,0 +1,26 @@
+{
+  "name": "node_express_example_template",
+  "version": "1.0.0",
+  "description": "Boilerplate for a node & express example",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdevries3133/node_express_example_template.git"
+  },
+  "author": "Jack DeVries <jdevries3133@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdevries3133/node_express_example_template/issues"
+  },
+  "homepage": "https://github.com/jdevries3133/node_express_example_template#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
