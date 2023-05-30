@@ -1,1 +1,13 @@
-const connectionString = 'mongodb+srv://kylie:<password>@cluster0.zmaiadc.mongodb.net/?retryWrites=true&w=majority'
+const mongoose = require('mongoose')
+
+const connectDB = (url) => {
+    return mongoose.connect(url, {
+    userNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    })
+}
+
+module.exports = connectDB
+
