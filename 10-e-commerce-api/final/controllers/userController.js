@@ -31,6 +31,10 @@ const updateUser = async (req, res) => {
   if (!email || !name) {
     throw new CustomError.BadRequestError('Please provide all values');
   }
+  const noUserFound = !results.rows.length;
+  if(noUserfound){
+    res.status(400).send({message:'User does not exist in DB'})
+  }
   const user = await User.findOne({ _id: req.user.userId });
 
   user.email = email;
