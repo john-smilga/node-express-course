@@ -1,10 +1,10 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const {login, dashboard} = require('../controllers/main')
+const { login, dashboard } = require("../controllers/main");
 
-router.router('/dashboard').get(dashboard)
+router.route("/dashboard").get(dashboard);
 
-router.router('/login').post(login)
+router.route("/login").post(login);
 
-module.exports(router)
+module.exports = router;
