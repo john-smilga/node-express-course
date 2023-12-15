@@ -1,20 +1,10 @@
-const http = require("http");
+const express = require("express");
+const app = express();
 
-const server = http.createServer((req, res) => {
-  const url = req.url;
-
-  if (url == "/contact") {
-    res.writeHead(400, { "content-type": "text/html" });
-    res.end("<h1> Page Not Found</h1>");
-  }
-  if (url == "/about") {
-    res.writeHead(200, { "content-type": "text/html" });
-    res.end("<h1> this is about page</h1>");
-  }
-
-  res.writeHead(200, { "content-type": "text/html" });
-  res.write("<h1>Welcome</h1>");
-  res.end();
+const productData = require("./data");
+app.get("/", (req, res) => {
+  res.status(200).json({ productData });
 });
-
-server.listen(4000);
+app.listen(5000, () => {
+  console.log("listening on port 5000");
+});
