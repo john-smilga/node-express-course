@@ -1,10 +1,29 @@
 const express = require("express");
 const app = express();
-
+const logger = require("./logger");
 const data = require("./data");
+const authorize = require("./authorize");
+// use app.use(middleware function) in order to invoke it in all the routes without manually adding them
+// here in the home page logger is called without passing the parameter.
+
+// if you want to add app.use(middleware) in only some path then,
+// app.use("/path", middleware);
+// this will call the middleware on all the routes beginning with the /paht'
+
+//app.use([middleware1, middleware2, middleware3])
+// you can use multiple middlewares as well
+// however it works in asceding order of the array
+//so we have to be careful of the order and which middleware to put first.
+//for e.g. app.use([authorize, logger])
+
+app.use([authorize, logger]);
+// IMPORTANT NOTE:
+// MIDDLEWARE IS POWERFUL BECAUSE YOU CAN
+//ACCESS IT AND IT'S DATA FROM ANYWHERE
 
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to home</h1> <a href='/api/products'> Products </a");
+  console.log(req.user);
+  res.send("home");
 });
 
 app.get("/api/products", (req, res) => {
