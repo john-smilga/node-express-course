@@ -1,13 +1,22 @@
+const express = require("express");
+const Task = require("../models/Task");
+const app = express();
+app.use(express.json());
+
 const getAllTasks = (req, res) => {
   return res.send("all items from the file");
 };
 
-const creatNewTask = (req, res) => {
-  return res.send("creating new task");
+const creatNewTask = async (req, res) => {
+  const task = await Task.create({ name: "first task", completed: true });
+  res.status(201).json({
+    task,
+  });
 };
 
 const getSingleTask = (req, res) => {
-  return res.send("get single task");
+  const { id } = req.params;
+  return res.send(`heres your task ${id}`);
 };
 
 const updateTask = (req, res) => {
