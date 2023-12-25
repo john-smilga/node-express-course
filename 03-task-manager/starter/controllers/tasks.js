@@ -5,9 +5,14 @@ app.use(express.json());
 
 const getAllTasks = async (req, res) => {
   try {
-    const allTasks = await Task.find();
+    const tasks = await Task.find();
 
-    res.status(200).json(allTasks);
+    // res.status(200).json({ tasks, amount: tasks.length });
+    //setup a global model for your response so it's easy for frontend to access the data sent.
+    res.status(200).json({
+      status: "success",
+      data: { tasks, numberofTasks: tasks.length },
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -38,14 +43,16 @@ const getSingleTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-  const { id, updateName } = req.body;
-  console.log(id, updateName);
+  const { id, name, completed } = req.body;
   try {
-    const updatedTask = await Task.updateOne({ _id: id }, { name: updateName });
-    if (!updatedTask) {
+    const task = await Task.updateOne(
+      { _id: id },
+      { name: name, completed: completed }
+    );
+    if (!task) {
       res.status(404).json({ message: "tasks not fouhnd" });
     }
-    res.status(200).json({ message: updatedTask });
+    res.status(200).json({ task });
   } catch (err) {
     res.status(500).json({ message: "server error try again later" });
   }
