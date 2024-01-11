@@ -2,16 +2,25 @@ const { query } = require("express");
 const Product = require("../models/product");
 
 const getAllProductStatic = async (req, res) => {
-  const products = await Product.find({}).sort("name");
+  const products = await Product.find({}).limit(2).skip(1);
 
   res.status(200).json({ products });
 };
 const getAllProducts = async (req, res) => {
-  const { featured, company, name, sort } = req.query;
+  const { featured, company, name, sort, numericFilters } = req.query;
   const queryObject = {};
   if (featured) {
     queryObject.featured = featured === "true" ? true : false;
     console.log(queryObject);
+  }
+  if (numericFilters) {
+    const operatorMap = {
+      ">": "$gt",
+      ">=": "$gte",
+      "=": "$eq",
+      "<": "$lt",
+      "<=": "$lte",
+    };
   }
   if (company) {
     queryObject.company = company;
@@ -22,8 +31,9 @@ const getAllProducts = async (req, res) => {
 
   let products = Product.find(queryObject);
   if (sort) {
-    console.log(sort);
-    products = products.sort(sort);
+    let sortquery = sort.split(",").join(" ");
+
+    products = products.sort(sortquery);
   }
 
   const result = await products;
