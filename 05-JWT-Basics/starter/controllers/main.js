@@ -15,22 +15,11 @@ const login = async (req, res) => {
 
 const dashboard = async (req, res) => {
   const luckyNumber = Math.floor(Math.random() * 100);
-  const { authorization } = req.headers;
-  if (!authorization || !authorization.startsWith("Bearer")) {
-    throw new customApiError("No Authorization token provided", 400);
-  }
 
-  const token = authorization.split(" ")[1];
-  console.log(token);
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded);
-  } catch (error) {
-    console.log(error);
-  }
-  res.status(200).send({
-    msg: "hello, user",
-    secret: `here is your lucky number ${luckyNumber}`,
+  console.log(req.user);
+  res.status(200).json({
+    msg: `Hello, ${req.user.username}`,
+    secret: `Here's your lucky number ${luckyNumber}`,
   });
 };
 
