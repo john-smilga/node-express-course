@@ -1,10 +1,10 @@
-const customApiError = require("../errors/custom-error");
+const { badRequestError } = require("../errors/index");
 const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
-    throw new customApiError("please provide the login credentials", 400);
+    throw new badRequestError("please provide the login credentials");
   }
   const id = new Date().getDate();
   const token = jwt.sign({ id, username }, process.env.JWT_SECRET, {
