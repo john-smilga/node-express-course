@@ -1,4 +1,4 @@
-const taskIDDOM = document.querySelector('.task-edit-id')
+const taskIDIOM = document.querySelector('.task-edit-id')
 const taskNameDOM = document.querySelector('.task-edit-name')
 const taskCompletedDOM = document.querySelector('.task-edit-completed')
 const editFormDOM = document.querySelector('.single-task-form')
@@ -15,7 +15,7 @@ const showTask = async () => {
     } = await axios.get(`/api/v1/tasks/${id}`)
     const { _id: taskID, completed, name } = task
 
-    taskIDDOM.textContent = taskID
+    taskIDIOM.textContent = taskID
     taskNameDOM.value = name
     tempName = name
     if (completed) {
@@ -44,7 +44,7 @@ editFormDOM.addEventListener('submit', async (e) => {
 
     const { _id: taskID, completed, name } = task
 
-    taskIDDOM.textContent = taskID
+    taskIDIOM.textContent = taskID
     taskNameDOM.value = name
     tempName = name
     if (completed) {
