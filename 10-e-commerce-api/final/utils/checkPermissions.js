@@ -1,6 +1,6 @@
 const CustomError = require('../errors');
 
-const chechPermissions = (requestUser, resourceUserId) => {
+const checkPermissions = (requestUser, resourceUserId) => {
   // console.log(requestUser);
   // console.log(resourceUserId);
   // console.log(typeof resourceUserId);
@@ -11,4 +11,4 @@ const chechPermissions = (requestUser, resourceUserId) => {
   );
 };
 
-module.exports = chechPermissions;
+module.exports = checkPermissions;
